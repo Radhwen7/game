@@ -1,3 +1,7 @@
-this is snake game 
+this is snake game 2D
 i hope you like it 
 it's not very advanced 
+i used html 
+css 
+jq
+to bring this game to life 
