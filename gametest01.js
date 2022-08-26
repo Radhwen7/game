@@ -64,42 +64,40 @@ $(document).ready(function(){
   //Lets paint the snake now
   function paint()
   {
-    //To avoid the snake trail we need to paint the BG on every frame
+    //we need to paint every frame
     //Lets paint the canvas now
     ctx.fillStyle = "white";
     ctx.fillRect(0, 0, w, h);
     ctx.strokeStyle = "black";
     ctx.strokeRect(0, 0, w, h);
     
-    //The movement code for the snake to come here.
-    //The logic is simple
-    //Pop out the tail cell and place it infront of the head cell
+    //this will make the snake move.
+    
     var nx = snake_array[0].x;
     var ny = snake_array[0].y;
-    //These were the position of the head cell.
+    //head position
     //We will increment it to get the new head position
-    //Lets add proper direction based movement now
+    //now we'll add directions
     if(d == "right") nx++;
     else if(d == "left") nx--;
     else if(d == "up") ny--;
     else if(d == "down") ny++;
     
-    //Lets add the game over clauses now
-    //This will restart the game if the snake hits the wall
-    //Lets add the code for body collision
-    //Now if the head of the snake bumps into its body, the game will restart
+   
+    //restart the game code
+  
+    //if the head hit the wall it restart 
     if(nx == -1 || nx == w/cw || ny == -1 || ny == h/cw || check_collision(nx, ny, snake_array))
     {
       //restart game
-      init();
+      creation();
       //Lets organize the code a bit now.
       return;
     }
     
-    //Lets write the code to make the snake eat the food
-    //The logic is simple
-    //If the new head position matches with that of the food,
-    //Create a new head instead of moving the tail
+    //this code will make the snake eat food 
+    //and the tail does'nt get food 
+
     if(nx == food.x && ny == food.y)
     {
       var tail = {x: nx, y: ny};
@@ -113,9 +111,10 @@ $(document).ready(function(){
       var tail = snake_array.pop(); //pops the last cell
       tail.x = nx; tail.y = ny;
     }
-    //The snake can now eat the food.
     
-    snake_array.unshift(tail); //puts back the tail as the first cell
+    
+    snake_array.unshift(tail); //put the tail at first 
+    //we have to loop in the array of snake 
     
     for(var i = 0; i < snake_array.length; i++)
     {
@@ -124,8 +123,8 @@ $(document).ready(function(){
       paint_cell(c.x, c.y, "blue");
     }
     
-    //Lets paint the food
-    paint_cell(food.x, food.y, "red");
+    //food painting 
+    paint_cell(food.x, food.y, "green");
     //Lets paint the score
     var score_text = "Score: " + score;
      var level_text = "Level: " + level;
