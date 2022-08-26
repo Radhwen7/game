@@ -1,0 +1,3 @@
+this is snake game 
+i hope you like it 
+it's not very advanced 
