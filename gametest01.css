@@ -4,8 +4,16 @@ body {
 
 #canvas {
   display: block;
+  
+
   margin: 5px ;
   border: 10px solid #350;
   
   
+}
+p{
+  color : yellow;
+  font-size: 50px;
+  height: 10px;
+
 }

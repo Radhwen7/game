@@ -57,8 +57,8 @@ $(document).ready(function(){
       x: Math.round(Math.random()*(w-cw)/cw), 
       y: Math.round(Math.random()*(h-cw)/cw), 
     };
-    //This will create a cell with x/y between 0-44
-    //Because there are 45(450/10) positions accross the rows and columns
+    //This will create a cell of x and y 
+  
   }
   
   //Lets paint the snake now
@@ -68,8 +68,11 @@ $(document).ready(function(){
     //Lets paint the canvas now
     ctx.fillStyle = "white";
     ctx.fillRect(0, 0, w, h);
+    //The fillRect() method allows you to draw a filled rectangle at (x,y) position
     ctx.strokeStyle = "black";
     ctx.strokeRect(0, 0, w, h);
+    // we refer to w and h with width and height 
+    // and The strokeRect() method is used to draw the rectangle in a given color
     
     //this will make the snake move.
     
@@ -82,16 +85,17 @@ $(document).ready(function(){
     else if(d == "left") nx--;
     else if(d == "up") ny--;
     else if(d == "down") ny++;
+    // i search how i can move an element in all direction (left right up and down)
     
    
     //restart the game code
   
     //if the head hit the wall it restart 
     if(nx == -1 || nx == w/cw || ny == -1 || ny == h/cw || check_collision(nx, ny, snake_array))
-    {
+    {// btw the collision uses keyboard to move a div.
       //restart game
       creation();
-      //Lets organize the code a bit now.
+      
       return;
     }
     
@@ -137,8 +141,10 @@ $(document).ready(function(){
   {
     ctx.fillStyle = color;
     ctx.fillRect(x*cw, y*cw, cw, cw);
+    //draws filled text on the canvas
     ctx.strokeStyle = "white";
     ctx.strokeRect(x*cw, y*cw, cw, cw);
+    //The strokeRect() method draws a rectangle 
   }
   
   function check_collision(x, y, array)
@@ -154,7 +160,9 @@ $(document).ready(function(){
   }
   
   //controls
+  ///this will actually set the controls.
   $(document).keydown(function(e){
+    //The keydown event occurs when a keyboard key is pressed down
     var key = e.which;
     //We will add another clause to prevent reverse gear
     if(key == "37" && d != "right") d = "left";
@@ -163,6 +171,7 @@ $(document).ready(function(){
     else if(key == "40" && d != "up") d = "down";
    
   })
+  console.log("hey")
   
   
   
